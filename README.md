@@ -1,3 +1,85 @@
+# sre_work_samples.VAMSHI.MEDETHENAPALLI
+
+############--------------Sample Tech Challange -1 -------------------################
+
+
+#!/bin/bash
+
+passwd=$1
+group=$2
+if [ -z "$passwd" ] | [ -z "$group" ];
+  then
+    echo "Please pass exactly two arguments with absolute path: 1) passwd file 2)group file"
+    echo "Example usage: most_active_group /etc/passwd /etc/group"
+    exit 1
+fi
+high_user=NULL
+count=0
+for user in `cat $passwd | egrep "bash$|sh$"| awk -F: '{ print $5 }' | tr ',' '\n' |sort`
+  do
+    high_user=$user
+    if [ $high_user == $user ];
+      then let "count++";
+    fi;
+  done
+  echo $high_user:$count
+
+
+Running this shell script:
+-> Make sure that the sheel script file has the execution permissions.
+-> `sh <Shell Script file name>.sh argument1 argument2`
+-> argument1 filename1 [ex:/etc/passwd ]
+-> argument2` filname2 [ex: /etc/group]
+
+Script working flow:
+-> Intially script will check if the place holders "passwd and group" are not null.
+-> Then in the next snippet of the script it will intilize a count variable
+-> Now it will use awk utility and iterate through the provided input files and start counting the no.of users in the group and assign it to the variable high_user
+-> Now it will display the name of the highest user group and no.of users in that group
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Terraform-AWS
 Assignment-1
 ------------------------------------------------------------------------------------------------------------------------------------------
